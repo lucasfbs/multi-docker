@@ -8,18 +8,15 @@ before_install:
 script:
  - docker run lfbds/react-test npm test -- --coverage
 
-after_sucess:
-  - docker build -t lfbds/multi-client ./client
-  - docker build -t lfbds/multi-multi-nginx ./nginx
-  - docker build -t lfbds/multi-server ./server
-  - docker build -t lfbds/multi-worker ./worker
+after_success:
+ - docker build -t lfbds/multi-client ./client
+ - docker build -t lfbds/multi-multi-nginx ./nginx
+ - docker build -t lfbds/multi-server ./server
+ - docker build -t lfbds/multi-worker ./worker
 
-
-#log in to the docler CLI
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-#Take those images and push them to docker hub
 
-  - docker push lfbds/multi-client
-  - docker push lfbds/multi-nginx
-  - docker push lfbds/multi-server
-  - docker push lfbds/multi-worker
+ - docker push lfbds/multi-client
+ - docker push lfbds/multi-nginx
+ - docker push lfbds/multi-server
+ - docker push lfbds/multi-worker
