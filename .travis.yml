@@ -20,3 +20,19 @@ after_success:
  - docker push lfbds/multi-nginx
  - docker push lfbds/multi-server
  - docker push lfbds/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: sa-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-sa-east-1-739292332581
+  bucket_path: docker-multi
+  on:
+   branch: master
+   access_key_id: 
+    secure: $AWS_ACCESS_KEY
+   secret_access_key:
+    secure: $AWS_SECRET_KEY
+
+
