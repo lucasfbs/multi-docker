@@ -25,12 +25,11 @@
 	"name": "nginx",
         "image": "lfbds/multi-nginx",
         "essential": true,
+        "memory": 64,
         "portMappings": [
        {
        "hostPort": 80,
        "containerPort": 80,
-        "memory": 64
-
        } 
 	],
        "links": ["client","server"]
